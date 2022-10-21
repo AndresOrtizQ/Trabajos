@@ -20,9 +20,14 @@ public class Ventas implements Serializable{
 	@Column(name="Valor_Total", length=11)
 	private int valor_total;
 	
-	@Column(name="Id_domicilio", length=11)
-	private int id_domicilio;
+	@OneToOne 
+	@JoinColumn(name = "id_Domicilios_fk", nullable = false)
+	private Domicilios Domicilios;
 	
-	@Column(name="Id_reserva", length=11)
-	private int id_reserva;
+	@OneToOne 
+	@JoinColumn(name = "id_Reservas_fk", nullable = false)
+	private Reservas Reservas;
+	
+	@OneToOne(mappedBy = "Ventas", cascade = CascadeType.ALL)
+	private Pagos Pagos;
 }

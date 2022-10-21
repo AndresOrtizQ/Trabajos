@@ -28,9 +28,10 @@ public class Reservas implements Serializable {
 	@Column(name="Horas", length=11)
 	private Time hora;
 	
-	@Column(name="Id_Cancha", length=11)
-	private int id_cancha;
+	@OneToOne(mappedBy = "Reservas", cascade = CascadeType.ALL)
+	private Ventas Ventas;
 	
-	
-	
+	@OneToOne 
+	@JoinColumn(name = "id_Canchas_fk", nullable = false)
+	private Canchas Canchas;
 }

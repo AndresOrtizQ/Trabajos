@@ -2,6 +2,8 @@ package com.Softbar.CTElPaisa.clases;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -27,7 +29,13 @@ public class Compras implements Serializable{
 	@Column(name="Total", length=11)
 	private int total;
 	
-	@Column(name="Id_Proveedor", length=11)
-	private int id_proveedor;
+	@ManyToMany
+	@JoinTable(name="detalle_compra",
+		joinColumns = @JoinColumn(name="id_Compras_fk",nullable = false),
+		inverseJoinColumns = @JoinColumn(name="id_Productos_fk",nullable = false))
+	private List<Productos> ListProductos; 
 	
+	@ManyToOne
+	@JoinColumn(name="id_Proveedores_fk",referencedColumnName = "id_proveedor")
+	private Proveedores id_Proveedores_fk;
 }

@@ -1,6 +1,8 @@
 package com.Softbar.CTElPaisa.clases;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,5 +21,8 @@ public class Categorias implements Serializable {
 	
 	@Column(name="Categoria", length=255)
 	private String nombre_categoria;
+	
+	@OneToMany(mappedBy = "id_Categorias_fk")
+	private List<Productos> ListProductos;
 	
 }

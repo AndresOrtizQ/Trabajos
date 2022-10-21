@@ -20,4 +20,6 @@ public class Canchas implements Serializable{
 	@Column(name="Nombre_Cancha", length=250)
 	private String nombre_cancha;
 	
+	@OneToOne(mappedBy = "Canchas", cascade = CascadeType.ALL)
+	private Reservas Reservas;
 }

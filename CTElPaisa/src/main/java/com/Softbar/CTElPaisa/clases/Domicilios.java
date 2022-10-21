@@ -24,13 +24,15 @@ public class Domicilios implements Serializable {
 	
 	@Column(name="Hora")
 	private Time hora;
+		
+	@ManyToOne
+	@JoinColumn(name="id_Usuarios_fk",referencedColumnName = "id")
+	private Usuarios id_Usuarios_fk;
 	
-	@Column(name="Id_Pedido", length=11)
-	private int id_pedido;
+	@OneToOne(mappedBy = "Domicilios", cascade = CascadeType.ALL)
+	private Pedidos Pedidos;
 	
-	@Column(name="Id_Usuario", length=11)
-	private int id_usuario;
-	
-	
+	@OneToOne(mappedBy = "Domicilios", cascade = CascadeType.ALL)
+	private Ventas Ventas;
 	
 }

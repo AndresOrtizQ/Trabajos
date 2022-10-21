@@ -19,5 +19,8 @@ public class Formas_Pago implements Serializable{
 	
 	@Column(name="Forma_De_Pago", length=250)
 	private String nombre_forma;
+	
+	@OneToOne(mappedBy = "Formas_Pago", cascade = CascadeType.ALL)
+	private Pagos Pagos;
 
 }

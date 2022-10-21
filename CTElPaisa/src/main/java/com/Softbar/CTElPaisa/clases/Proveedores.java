@@ -1,6 +1,8 @@
 package com.Softbar.CTElPaisa.clases;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -23,4 +25,6 @@ public class Proveedores implements Serializable {
 	@Column(name="Articulo", length=200)
 	private String articulo;
 	
+	@OneToMany(mappedBy = "id_Proveedores_fk")
+	private List<Compras> ListCompras;
 }

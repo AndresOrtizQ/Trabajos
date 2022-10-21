@@ -1,7 +1,10 @@
 package com.Softbar.CTElPaisa.clases;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
+
 
 @Entity
 @Table(name="Roles")
@@ -20,4 +23,6 @@ public class Roles implements Serializable {
 	@Column(name="Nombre_Rol", length=255)
 	private String nombres_rol;
 	
+	@OneToMany(mappedBy = "id_roles_fk")
+	private List<Usuarios> ListUsuarios;
 }

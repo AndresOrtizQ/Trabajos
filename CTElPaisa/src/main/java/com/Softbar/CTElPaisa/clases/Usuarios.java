@@ -1,6 +1,8 @@
 package com.Softbar.CTElPaisa.clases;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -41,11 +43,14 @@ public class Usuarios implements Serializable {
 	@Column(name="Edad", length=11)
 	private int edad;
 	
-	@Column(name="ID_Rol", length=11)
-	private int id_rol;
-	
 	@Column(name="Nombre_Rol", length=11)
 	private int nombre_rol;
 	
+	@ManyToOne
+	@JoinColumn(name="id_roles_fk",referencedColumnName = "id_Rol")
+	private Roles id_roles_fk;
+	
+	@OneToMany(mappedBy = "id_Usuarios_fk")
+	private List<Domicilios> ListDomicilios;
 	
 }

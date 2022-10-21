@@ -2,6 +2,8 @@ package com.Softbar.CTElPaisa.clases;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -30,9 +32,7 @@ public class Inventarios implements Serializable{
 	@Column(name="Nota", length=200)
 	private String nota;
 	
-	@Column(name="Id_Producto", length=11)
-	private int id_producto;
-	
-	
+	@OneToMany(mappedBy = "id_Inventarios_fk")
+	private List<Productos> ListProductos;
 
 }
